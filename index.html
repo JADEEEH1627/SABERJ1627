@@ -1,0 +1,1473 @@
+!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saber Badminton Center | Unleash Your Smash</title>
+  
+  <!-- Google Fonts: Outfit for bold athletic headings, Plus Jakarta Sans for crisp UI/body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Sporty Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            saber: {
+              dark: '#0F172A',
+              navy: '#1E1B4B',
+              purple: '#5B21B6',
+              electric: '#7C3AED',
+              blue: '#1D4ED8',
+              royal: '#3B82F6',
+              cyan: '#38BDF8',
+              lavender: '#DDD6FE',
+            }
+          },
+          backgroundImage: {
+            'saber-gradient': 'linear-gradient(135deg, #5B21B6 0%, #1D4ED8 100%)',
+            'saber-hero': 'linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(91, 33, 182, 0.84) 55%, rgba(29, 78, 216, 0.86) 100%)',
+            'court-grid': 'linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Sporty Styling & Smooth Reveal Animations */
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Subtle badminton court line background motif */
+    .court-lines-bg {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+    }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Shuttlecock float subtle animation */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(-12deg); }
+      50% { transform: translateY(-10px) rotate(-6deg); }
+    }
+    .animate-shuttle {
+      animation: floatSlow 4.5s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F172A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #7C3AED, #3B82F6);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-saber-electric selection:text-white">
+
+  <!-- ==================== STICKY NAVIGATION BAR ==================== -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-saber-dark/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo with Custom Shuttlecock SVG -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-saber-electric to-saber-royal flex items-center justify-center shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-transform">
+            <!-- Custom Badminton Shuttlecock SVG -->
+            <svg class="w-7 h-7 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 24C10 26.7614 12.2386 29 15 29C17.7614 29 20 26.7614 20 24H10Z" fill="currentColor"/>
+              <path d="M10.5 22L6 8L12.5 11.5L15 6L17.5 11.5L24 8L19.5 22H10.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M12.5 11.5L13.5 22M17.5 11.5L16.5 22" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M25 14L31 10M26 19L32 17" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-white block leading-none">
+              SABER <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-sky-400">BADMINTON</span>
+            </span>
+            <span class="text-[11px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Pro Arena &amp; Club</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7">
+          <a href="#home" class="nav-link text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">Home</a>
+          <a href="#courts" class="nav-link text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">Courts &amp; Facilities</a>
+          <a href="#rates" class="nav-link text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">Rates &amp; Promos</a>
+          <a href="#about" class="nav-link text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">About Us</a>
+          <a href="#contact" class="nav-link text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Desktop CTA & Mobile Hamburger Button -->
+        <div class="flex items-center gap-3">
+          <a href="#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-heading font-bold text-sm text-white bg-gradient-to-r from-saber-electric to-saber-royal hover:from-purple-500 hover:to-blue-500 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-calendar-check"></i>
+            Book a Court
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button id="mobile-menu-btn" aria-label="Toggle Navigation" class="lg:hidden p-2.5 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-colors">
+            <i id="menu-icon" class="fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-Down Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-saber-dark/98 border-b border-white/10 px-4 pt-3 pb-6 space-y-2">
+      <a href="#home" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-white hover:bg-white/10">Home</a>
+      <a href="#courts" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-white/10">Courts &amp; Facilities</a>
+      <a href="#rates" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-white/10">Rates &amp; Promos</a>
+      <a href="#about" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-white/10">About Us</a>
+      <a href="#contact" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-semibold text-slate-200 hover:bg-white/10">Contact</a>
+      <div class="pt-2">
+        <a href="#booking" class="mobile-nav-link flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-heading font-bold text-white bg-gradient-to-r from-saber-electric to-saber-royal shadow-lg">
+          <i class="fa-solid fa-bolt"></i> Book a Court Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 1. HOME / HERO SECTION ==================== -->
+  <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden bg-saber-dark">
+    <!-- Hero Background Image with Fallback & Purple-Blue Sporty Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1920&q=80" 
+        onerror="this.src='https://placehold.co/1920x1080/1E1B4B/DDD6FE?text=Saber+Badminton+Center'"
+        alt="Badminton court indoor tournament arena" 
+        class="w-full h-full object-cover object-center scale-105"
+      />
+      <div class="absolute inset-0 bg-saber-hero"></div>
+      <!-- Architectural Court Line Grid Overlay -->
+      <div class="absolute inset-0 bg-court-grid opacity-50"></div>
+      <!-- Glowing Orbs -->
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-sky-300 text-xs sm:text-sm font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            Premier BWF-Standard Indoor Arena
+          </div>
+
+          <h1 class="font-heading font-black text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.08] tracking-tight">
+            Unleash Your Smash at <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 via-sky-300 to-blue-400">Saber Badminton Center</span>
+          </h1>
+
+          <p class="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Experience tournament-grade synthetic courts, anti-glare pro LED lighting, and an electric community built for casual rallies, barkada matches, and competitive athletes.
+          </p>
+
+          <!-- Dual CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#booking" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-heading font-extrabold text-base text-white bg-gradient-to-r from-saber-electric to-saber-royal hover:from-purple-500 hover:to-blue-500 shadow-xl shadow-purple-700/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5">
+              <i class="fa-solid fa-calendar-plus"></i>
+              Book a Court
+            </a>
+            <a href="#rates" class="w-full sm:w-auto px-8 py-4 rounded-2xl font-heading font-bold text-base text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2.5">
+              <i class="fa-solid fa-tags text-sky-400"></i>
+              Explore Rates
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Feature Card -->
+        <div class="lg:col-span-5 hidden sm:block">
+          <div class="relative mx-auto max-w-md">
+            <!-- Decorative Glow Frame -->
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-violet-500 to-sky-500 opacity-75 blur-md"></div>
+            <div class="relative rounded-3xl overflow-hidden bg-saber-navy border border-white/15 shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1613918108466-292b78a8ef95?auto=format&fit=crop&w=900&q=80" 
+                onerror="this.src='https://placehold.co/800x600/312E81/FFFFFF?text=Pro+Shuttlecock+%26+Racket'"
+                alt="Feather shuttlecock and badminton racket on court" 
+                class="w-full h-72 object-cover"
+              />
+              <div class="p-6 bg-gradient-to-b from-saber-navy to-saber-dark">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-300 text-xs font-bold uppercase">Live Court Status</span>
+                  <span class="flex items-center gap-1.5 text-emerald-400 text-xs font-bold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> 8 Courts Ready
+                  </span>
+                </div>
+                <h3 class="font-heading font-bold text-xl text-white mb-1">Instant Online Reservation</h3>
+                <p class="text-sm text-slate-300 mb-4">Calculate your court hours, add rackets or feather tubes, and lock in your slot in seconds.</p>
+                <div class="flex items-center justify-between pt-3 border-t border-white/10 text-xs text-slate-300">
+                  <span><i class="fa-solid fa-clock text-sky-400 mr-1.5"></i>6:00 AM – 11:00 PM Daily</span>
+                  <span class="font-bold text-violet-300">From ₱280 / hr</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Highlight Stats Bar -->
+      <div class="mt-14 lg:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-5 flex items-center gap-4 hover:bg-white/15 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-purple-600/40 border border-purple-400/30 flex items-center justify-center text-violet-300 shrink-0">
+            <i class="fa-solid fa-table-cells-large text-xl"></i>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-xl sm:text-2xl text-white">8 Courts</div>
+            <div class="text-xs sm:text-sm text-slate-300">BWF-Standard Mats</div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-5 flex items-center gap-4 hover:bg-white/15 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-blue-600/40 border border-blue-400/30 flex items-center justify-center text-sky-300 shrink-0">
+            <i class="fa-solid fa-lightbulb text-xl"></i>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-xl sm:text-2xl text-white">Pro LED</div>
+            <div class="text-xs sm:text-sm text-slate-300">Anti-Glare Side Lighting</div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-5 flex items-center gap-4 hover:bg-white/15 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-indigo-600/40 border border-indigo-400/30 flex items-center justify-center text-indigo-300 shrink-0">
+            <i class="fa-solid fa-store text-xl"></i>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-xl sm:text-2xl text-white">Pro Lounge</div>
+            <div class="text-xs sm:text-sm text-slate-300">Gear Shop &amp; Stringing</div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 p-5 flex items-center gap-4 hover:bg-white/15 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-sky-600/40 border border-sky-400/30 flex items-center justify-center text-sky-300 shrink-0">
+            <i class="fa-solid fa-clock text-xl"></i>
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-xl sm:text-2xl text-white">17 Hours</div>
+            <div class="text-xs sm:text-sm text-slate-300">Open 6 AM – 11 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. COURTS & FACILITIES ==================== -->
+  <section id="courts" class="py-20 lg:py-28 bg-slate-50 court-lines-bg relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-saber-purple font-bold text-xs uppercase tracking-widest mb-3">
+          World-Class Arena
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-saber-dark mb-4">
+          Courts &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-saber-purple to-saber-blue">Pro Facilities</span>
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Every detail at Saber Badminton Center is engineered for peak footwork traction, crystal-clear shuttle visibility, and post-match comfort.
+        </p>
+      </div>
+
+      <!-- Featured Top 2 Large Cards -->
+      <div class="grid md:grid-cols-2 gap-8 mb-8">
+        <!-- Card 1: BWF Synthetic Courts -->
+        <div class="reveal group rounded-3xl bg-white border border-slate-200/80 shadow-lg hover:shadow-2xl hover:shadow-purple-900/10 transition-all duration-300 overflow-hidden flex flex-col">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1599474924187-334a4ae5bd3c?auto=format&fit=crop&w=1000&q=80" 
+              onerror="this.src='https://placehold.co/800x500/5B21B6/FFFFFF?text=BWF+Synthetic+Courts'"
+              alt="Championship BWF-Approved Synthetic Mat Courts" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-saber-dark/80 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3.5 py-1.5 rounded-xl bg-saber-purple text-white text-xs font-bold uppercase tracking-wider shadow-md">
+              Courts 1 – 8
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-purple-100 text-saber-purple flex items-center justify-center">
+                  <i class="fa-solid fa-layer-group text-lg"></i>
+                </div>
+                <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-saber-dark">Championship BWF-Approved Synthetic Mat Courts</h3>
+              </div>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                Multi-layered 7.0mm shock-absorbing PVC tournament mats laid over sprung sub-flooring. Designed to protect knees and ankles during explosive lunges while providing high-grip, non-slip traction.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100">
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Shock-Absorbing</span>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Non-Slip Surface</span>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Generous Run-Off Space</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Anti-Glare LED Lighting -->
+        <div class="reveal group rounded-3xl bg-white border border-slate-200/80 shadow-lg hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 overflow-hidden flex flex-col">
+          <div class="relative h-64 overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1000&q=80" 
+              onerror="this.src='https://placehold.co/800x500/1D4ED8/FFFFFF?text=Anti-Glare+LED+Lighting'"
+              alt="Anti-Glare Pro Tournament LED Lighting" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-saber-dark/80 via-transparent to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3.5 py-1.5 rounded-xl bg-saber-blue text-white text-xs font-bold uppercase tracking-wider shadow-md">
+              12m Ceiling Clearance
+            </span>
+          </div>
+          <div class="p-7 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-100 text-saber-blue flex items-center justify-center">
+                  <i class="fa-solid fa-sun text-lg"></i>
+                </div>
+                <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-saber-dark">Anti-Glare Pro Tournament LED &amp; High Ceiling</h3>
+              </div>
+              <p class="text-slate-600 leading-relaxed mb-4">
+                1,000-lux asymmetrical side-mounted LED arrays eliminate overhead blind spots when tracking high clears and steep jump smashes, paired with matte dark-navy walls for maximum shuttle contrast.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t border-slate-100">
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Zero Overhead Glare</span>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">12-Meter Roof</span>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-700">Draft-Free Ventilation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom 3 Facility Cards -->
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 3: Pro Shop & Stringing -->
+        <div class="reveal group rounded-3xl bg-white border border-slate-200/80 p-7 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-lg shadow-purple-500/25 mb-5 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-saber-dark mb-2.5">Pro Shop, Racket Stringing &amp; Rentals</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Digital precision stringing station with Yonex &amp; Victor strings, fresh overgrips, tournament feather shuttlecocks, and carbon-graphite demo rackets available for rent.
+          </p>
+          <a href="#booking" class="inline-flex items-center gap-1.5 text-sm font-bold text-saber-purple hover:text-saber-blue transition-colors">
+            Add Gear to Booking <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Card 4: Players' Lounge & Showers -->
+        <div class="reveal group rounded-3xl bg-white border border-slate-200/80 p-7 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-sky-500 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 mb-5 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-shower text-xl"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-saber-dark mb-2.5">Air-Conditioned Lounge &amp; Hot Showers</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Cool down between sets in our glass-walled air-conditioned viewing lounge with hydration bar, secure digital lockers, and spotless shower rooms with hot &amp; cold water.
+          </p>
+          <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
+            <i class="fa-solid fa-wifi"></i> Free High-Speed Fiber Wi-Fi
+          </span>
+        </div>
+
+        <!-- Card 5: Coaching & Clinics -->
+        <div class="reveal group rounded-3xl bg-white border border-slate-200/80 p-7 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 to-blue-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/25 mb-5 group-hover:scale-110 transition-transform">
+            <i class="fa-solid fa-medal text-xl"></i>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-saber-dark mb-2.5">Coaching &amp; Junior/Adult Training Clinics</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            Level up your footwork, net play, and backhand smash with certified national-level coaches offering 1-on-1 private drills, weekend youth academies, and adult queuing nights.
+          </p>
+          <a href="#contact" class="inline-flex items-center gap-1.5 text-sm font-bold text-saber-blue hover:text-saber-purple transition-colors">
+            Inquire About Coaching <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. RATES & PROMOS ==================== -->
+  <section id="rates" class="py-20 lg:py-28 bg-saber-dark text-white relative overflow-hidden">
+    <!-- Background Decorative Accents -->
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-700/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-700/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-sky-300 font-bold text-xs uppercase tracking-widest mb-3">
+          Transparent Court Pricing
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-4">
+          Court Rates &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-sky-400">Smash Promos</span>
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg">
+          Flexible hourly court rates for early risers, after-work rallies, and weekend tournaments—plus exclusive bundle discounts.
+        </p>
+      </div>
+
+      <!-- Court Hourly Pricing Tiers (3 Columns) -->
+      <div class="grid md:grid-cols-3 gap-8 mb-14">
+        
+        <!-- Off-Peak Rate -->
+        <div class="reveal rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur-sm hover:border-violet-400/50 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-lg bg-violet-500/20 text-violet-300 text-xs font-bold uppercase">Weekdays Day</span>
+              <i class="fa-solid fa-sun text-violet-400 text-xl"></i>
+            </div>
+            <h3 class="font-heading font-extrabold text-2xl text-white mb-1">Off-Peak Hours</h3>
+            <p class="text-sm text-slate-400 mb-6">Monday – Friday • 6:00 AM – 4:00 PM</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="font-heading font-black text-4xl sm:text-5xl text-white">₱280</span>
+              <span class="text-slate-400 font-medium">/ hour / court</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-violet-400"></i> Ideal for morning drills &amp; solo practice</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-violet-400"></i> Full Pro LED lighting included</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-violet-400"></i> Free lounge &amp; shower access</li>
+            </ul>
+          </div>
+          <button type="button" onclick="selectRateAndScroll('offpeak')" class="w-full py-3.5 rounded-xl font-heading font-bold text-sm bg-white/10 hover:bg-violet-600 text-white transition-colors">
+            Select Off-Peak Rate
+          </button>
+        </div>
+
+        <!-- Peak Rate (Most Popular) -->
+        <div class="reveal rounded-3xl bg-gradient-to-b from-saber-purple/80 to-saber-blue/80 border-2 border-sky-400/60 p-8 shadow-2xl shadow-purple-900/50 relative transform md:-translate-y-2 flex flex-col justify-between">
+          <div class="absolute -top-3.5 right-6 px-4 py-1 rounded-full bg-gradient-to-r from-sky-400 to-violet-400 text-saber-dark font-heading font-extrabold text-xs uppercase tracking-wider shadow-lg">
+            Prime Time
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-lg bg-white/15 text-sky-200 text-xs font-bold uppercase">Weekdays Night</span>
+              <i class="fa-solid fa-fire text-sky-300 text-xl"></i>
+            </div>
+            <h3 class="font-heading font-extrabold text-2xl text-white mb-1">Peak Hours</h3>
+            <p class="text-sm text-indigo-200 mb-6">Monday – Friday • 4:00 PM – 11:00 PM</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="font-heading font-black text-4xl sm:text-5xl text-white">₱380</span>
+              <span class="text-indigo-200 font-medium">/ hour / court</span>
+            </div>
+            <ul class="space-y-3 text-sm text-white mb-8">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-300"></i> Electric evening club atmosphere</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-300"></i> Up to 6 players per court</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-300"></i> Priority Pro Shop &amp; stringing queue</li>
+            </ul>
+          </div>
+          <button type="button" onclick="selectRateAndScroll('peak')" class="w-full py-3.5 rounded-xl font-heading font-extrabold text-sm bg-white text-saber-navy hover:bg-sky-100 shadow-lg transition-colors">
+            Select Peak Rate
+          </button>
+        </div>
+
+        <!-- Weekend Rate -->
+        <div class="reveal rounded-3xl bg-white/5 border border-white/10 p-8 backdrop-blur-sm hover:border-sky-400/50 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-lg bg-blue-500/20 text-sky-300 text-xs font-bold uppercase">Sat – Sun &amp; Holidays</span>
+              <i class="fa-solid fa-trophy text-sky-400 text-xl"></i>
+            </div>
+            <h3 class="font-heading font-extrabold text-2xl text-white mb-1">Weekend All-Day</h3>
+            <p class="text-sm text-slate-400 mb-6">Saturday &amp; Sunday • 6:00 AM – 11:00 PM</p>
+            <div class="flex items-baseline gap-1 mb-6">
+              <span class="font-heading font-black text-4xl sm:text-5xl text-white">₱350</span>
+              <span class="text-slate-400 font-medium">/ hour / court</span>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Flat rate all weekend long</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Great for barkada &amp; family matches</li>
+              <li class="flex items-center gap-2.5"><i class="fa-solid fa-circle-check text-sky-400"></i> Open queuing sessions available</li>
+            </ul>
+          </div>
+          <button type="button" onclick="selectRateAndScroll('weekend')" class="w-full py-3.5 rounded-xl font-heading font-bold text-sm bg-white/10 hover:bg-blue-600 text-white transition-colors">
+            Select Weekend Rate
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Special Promos & Gear Rentals Row -->
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- 3 Special Promos (8 Cols) -->
+        <div class="lg:col-span-8 grid sm:grid-cols-3 gap-5 reveal">
+          <!-- Promo 1 -->
+          <div class="rounded-2xl bg-saber-navy/90 border border-violet-500/30 p-6 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-2.5 py-1 rounded-md bg-violet-500/20 text-violet-300 text-xs font-bold mb-3">CODE: SABER10</span>
+              <h4 class="font-heading font-bold text-lg text-white mb-2">Early Bird Smash Pass</h4>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                Enjoy 10% OFF your entire booking when you play 2+ hours or use our launch promo code online.
+              </p>
+            </div>
+            <button type="button" onclick="applyPromoAndScroll('SABER10')" class="text-left text-xs font-bold text-violet-300 hover:text-white flex items-center gap-1.5">
+              Apply SABER10 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Promo 2 -->
+          <div class="rounded-2xl bg-saber-navy/90 border border-sky-500/30 p-6 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 text-xs font-bold mb-3">CODE: STUDENT15</span>
+              <h4 class="font-heading font-bold text-lg text-white mb-2">Student &amp; Barkada Bundle</h4>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                15% OFF court &amp; gear rentals for varsity teams, students with valid ID, and 4+ player groups.
+              </p>
+            </div>
+            <button type="button" onclick="applyPromoAndScroll('STUDENT15')" class="text-left text-xs font-bold text-sky-300 hover:text-white flex items-center gap-1.5">
+              Apply STUDENT15 <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Promo 3 -->
+          <div class="rounded-2xl bg-saber-navy/90 border border-indigo-500/30 p-6 flex flex-col justify-between">
+            <div>
+              <span class="inline-block px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-300 text-xs font-bold mb-3">VIP CLUB</span>
+              <h4 class="font-heading font-bold text-lg text-white mb-2">Monthly Saber Membership</h4>
+              <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                ₱2,499/month for 10 flexible court hours, free locker use, and 15% off racket stringing services.
+              </p>
+            </div>
+            <a href="#contact" class="text-left text-xs font-bold text-indigo-300 hover:text-white flex items-center gap-1.5">
+              Join Membership <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Add-On Gear & Shuttle Rates Card (4 Cols) -->
+        <div class="lg:col-span-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/15 p-6 reveal flex flex-col justify-center">
+          <h4 class="font-heading font-extrabold text-lg text-white mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-shuttle-space text-sky-400"></i> Gear &amp; Shuttle Add-Ons
+          </h4>
+          <div class="space-y-3.5 text-sm">
+            <div class="flex items-center justify-between pb-2.5 border-b border-white/10">
+              <div>
+                <div class="font-semibold text-white">Pro Carbon Racket Rental</div>
+                <div class="text-xs text-slate-400">Per racket / session</div>
+              </div>
+              <span class="font-heading font-bold text-sky-300">₱80</span>
+            </div>
+            <div class="flex items-center justify-between pb-2.5 border-b border-white/10">
+              <div>
+                <div class="font-semibold text-white">Tournament Feather Shuttles</div>
+                <div class="text-xs text-slate-400">1 Tube (12 pcs • Speed 77)</div>
+              </div>
+              <span class="font-heading font-bold text-violet-300">₱850</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-white">Racket Re-Stringing Service</div>
+                <div class="text-xs text-slate-400">Labor + BG65 / BG80 String</div>
+              </div>
+              <span class="font-heading font-bold text-slate-200">₱450+</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. INTERACTIVE COURT BOOKING & LIVE PRICE CALCULATOR ==================== -->
+  <section id="booking" class="py-20 lg:py-28 bg-slate-100 court-lines-bg relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-saber-blue font-bold text-xs uppercase tracking-widest mb-3">
+          Instant Court Reservation
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-saber-dark mb-4">
+          Book a Court &amp; <span class="text-transparent bg-clip-text bg-gradient-to-r from-saber-purple to-saber-blue">Price Calculator</span>
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Customize your court, play duration, and gear add-ons below. Watch your itemized total update in real time.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Interactive Booking Form (7 Cols) -->
+        <form id="booking-form" novalidate class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-9 space-y-6 reveal">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl text-saber-dark flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-lg bg-saber-gradient text-white flex items-center justify-center text-sm">1</span>
+              Player &amp; Court Details
+            </h3>
+            <span class="text-xs font-semibold text-slate-400">* Required fields</span>
+          </div>
+
+          <!-- Validation Alert Banner (Hidden by default) -->
+          <div id="form-error-banner" class="hidden rounded-2xl bg-rose-50 border border-rose-200 p-4 text-rose-700 text-sm flex items-start gap-3">
+            <i class="fa-solid fa-circle-exclamation text-rose-500 mt-0.5"></i>
+            <span id="form-error-text">Please complete all required fields before confirming your booking.</span>
+          </div>
+
+          <!-- Name & Contact Grid -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="player-name" class="block text-sm font-bold text-slate-700 mb-1.5">Full Name *</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+                <input type="text" id="player-name" required placeholder="e.g., Marco Reyes" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-medium transition-all" />
+              </div>
+            </div>
+
+            <div>
+              <label for="player-contact" class="block text-sm font-bold text-slate-700 mb-1.5">Email or Mobile Number *</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <i class="fa-solid fa-phone"></i>
+                </span>
+                <input type="text" id="player-contact" required placeholder="e.g., 0917-555-0192 or email" class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-medium transition-all" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Court Selection & Date Grid -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="court-select" class="block text-sm font-bold text-slate-700 mb-1.5">Select Court (BWF Mat) *</label>
+              <select id="court-select" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-semibold text-slate-800 transition-all">
+                <option value="Court 1 (Center Championship)">Court 1 — Center Championship</option>
+                <option value="Court 2 (Pro Arena)">Court 2 — Pro Arena</option>
+                <option value="Court 3 (Pro Arena)">Court 3 — Pro Arena</option>
+                <option value="Court 4 (Side Wall VIP)">Court 4 — Side Wall VIP</option>
+                <option value="Court 5 (Club Standard)">Court 5 — Club Standard</option>
+                <option value="Court 6 (Club Standard)">Court 6 — Club Standard</option>
+                <option value="Court 7 (Training Bay)">Court 7 — Training Bay</option>
+                <option value="Court 8 (Training Bay)">Court 8 — Training Bay</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="booking-date" class="block text-sm font-bold text-slate-700 mb-1.5">Play Date *</label>
+              <input type="date" id="booking-date" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-semibold text-slate-800 transition-all" />
+            </div>
+          </div>
+
+          <!-- Rate Tier & Duration Grid -->
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="rate-tier" class="block text-sm font-bold text-slate-700 mb-1.5">Time Slot / Rate Tier</label>
+              <select id="rate-tier" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-semibold text-slate-800 transition-all">
+                <option value="offpeak" data-rate="280">Off-Peak (6 AM – 4 PM) — ₱280/hr</option>
+                <option value="peak" data-rate="380" selected>Peak Hours (4 PM – 11 PM) — ₱380/hr</option>
+                <option value="weekend" data-rate="350">Weekend All-Day — ₱350/hr</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="duration-hours" class="block text-sm font-bold text-slate-700 mb-1.5">Duration (Hours)</label>
+              <div class="flex items-center border border-slate-300 rounded-xl overflow-hidden">
+                <button type="button" onclick="adjustQty('duration-hours', -1, 1, 5)" class="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition-colors">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <input type="number" id="duration-hours" value="2" min="1" max="5" readonly class="w-full text-center font-heading font-extrabold text-base text-saber-dark bg-white py-2.5 outline-none" />
+                <button type="button" onclick="adjustQty('duration-hours', 1, 1, 5)" class="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition-colors">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add-ons: Racket Rentals & Shuttlecock Tubes -->
+          <div class="pt-2 border-t border-slate-100">
+            <label class="block text-sm font-bold text-slate-700 mb-3">Optional Gear &amp; Shuttlecock Add-Ons</label>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <!-- Racket Rental Counter -->
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-sm text-saber-dark">Pro Racket Rental</div>
+                  <div class="text-xs text-slate-500">₱80 per racket</div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="adjustQty('racket-qty', -1, 0, 8)" class="w-8 h-8 rounded-lg bg-white border border-slate-300 hover:bg-purple-50 text-slate-700 font-bold flex items-center justify-center">
+                    -
+                  </button>
+                  <input type="number" id="racket-qty" value="0" min="0" max="8" readonly class="w-8 text-center font-heading font-bold text-sm bg-transparent" />
+                  <button type="button" onclick="adjustQty('racket-qty', 1, 0, 8)" class="w-8 h-8 rounded-lg bg-white border border-slate-300 hover:bg-purple-50 text-slate-700 font-bold flex items-center justify-center">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <!-- Shuttlecock Tubes Counter -->
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <div class="font-bold text-sm text-saber-dark">Feather Shuttle Tube</div>
+                  <div class="text-xs text-slate-500">₱850 / tube (12 pcs)</div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="adjustQty('shuttle-qty', -1, 0, 10)" class="w-8 h-8 rounded-lg bg-white border border-slate-300 hover:bg-blue-50 text-slate-700 font-bold flex items-center justify-center">
+                    -
+                  </button>
+                  <input type="number" id="shuttle-qty" value="0" min="0" max="10" readonly class="w-8 text-center font-heading font-bold text-sm bg-transparent" />
+                  <button type="button" onclick="adjustQty('shuttle-qty', 1, 0, 10)" class="w-8 h-8 rounded-lg bg-white border border-slate-300 hover:bg-blue-50 text-slate-700 font-bold flex items-center justify-center">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Promo Code Input -->
+          <div>
+            <label for="promo-code" class="block text-sm font-bold text-slate-700 mb-1.5">Promo Code (Optional)</label>
+            <div class="flex gap-2.5">
+              <input type="text" id="promo-code" placeholder="Try SABER10 or STUDENT15" class="flex-1 px-4 py-3 rounded-xl border border-slate-300 uppercase focus:border-saber-electric focus:ring-2 focus:ring-purple-500/20 outline-none text-sm font-bold tracking-wider" />
+              <button type="button" id="apply-promo-btn" class="px-5 py-3 rounded-xl font-heading font-bold text-sm bg-saber-navy text-white hover:bg-saber-purple transition-colors">
+                Apply
+              </button>
+            </div>
+            <p id="promo-feedback" class="text-xs font-semibold mt-1.5 text-slate-500">
+              Valid codes: <span class="text-saber-purple font-bold">SABER10</span> (10% off) • <span class="text-saber-blue font-bold">STUDENT15</span> (15% off)
+            </p>
+          </div>
+        </form>
+
+        <!-- Right: Live Price Calculator Summary Card (5 Cols) -->
+        <div class="lg:col-span-5 lg:sticky lg:top-28 reveal">
+          <div class="rounded-3xl bg-gradient-to-br from-saber-dark via-saber-navy to-saber-dark text-white p-6 sm:p-8 shadow-2xl border border-white/15 relative overflow-hidden">
+            <!-- Subtle Glow -->
+            <div class="absolute -top-20 -right-20 w-48 h-48 bg-purple-600/30 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Live Estimator</span>
+                <h3 class="font-heading font-extrabold text-2xl text-white">Booking Summary</h3>
+              </div>
+              <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center text-sky-300">
+                <i class="fa-solid fa-calculator text-lg"></i>
+              </div>
+            </div>
+
+            <!-- Selected Court & Date Badge -->
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4 mb-6 space-y-2 text-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-400">Court:</span>
+                <span id="summary-court" class="font-bold text-white">Court 1 — Center Championship</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-400">Date:</span>
+                <span id="summary-date" class="font-bold text-sky-300">—</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-400">Schedule Tier:</span>
+                <span id="summary-tier" class="font-semibold text-violet-300">Peak Hours (4 PM – 11 PM)</span>
+              </div>
+            </div>
+
+            <!-- Itemized Breakdown -->
+            <div class="space-y-3.5 text-sm border-b border-white/10 pb-5 mb-5">
+              <div class="flex items-center justify-between">
+                <span id="calc-court-label" class="text-slate-300">Court Rental (2 hrs × ₱380)</span>
+                <span id="calc-court-cost" class="font-heading font-bold text-white">₱760.00</span>
+              </div>
+
+              <div id="calc-racket-row" class="hidden flex items-center justify-between">
+                <span id="calc-racket-label" class="text-slate-300">Racket Rentals (0 × ₱80)</span>
+                <span id="calc-racket-cost" class="font-heading font-bold text-white">₱0.00</span>
+              </div>
+
+              <div id="calc-shuttle-row" class="hidden flex items-center justify-between">
+                <span id="calc-shuttle-label" class="text-slate-300">Feather Shuttle Tubes (0 × ₱850)</span>
+                <span id="calc-shuttle-cost" class="font-heading font-bold text-white">₱0.00</span>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-white/5 text-slate-300">
+                <span>Subtotal</span>
+                <span id="calc-subtotal" class="font-heading font-bold text-white">₱760.00</span>
+              </div>
+
+              <div id="calc-discount-row" class="hidden flex items-center justify-between text-emerald-400">
+                <span id="calc-discount-label">Promo Discount (0%)</span>
+                <span id="calc-discount-amount" class="font-heading font-bold">-₱0.00</span>
+              </div>
+            </div>
+
+            <!-- Final Total -->
+            <div class="flex items-end justify-between mb-6">
+              <div>
+                <span class="block text-xs uppercase tracking-wider text-slate-400">Estimated Total</span>
+                <span class="text-xs text-slate-400">Pay at venue or via GCash/Card</span>
+              </div>
+              <div id="calc-total" class="font-heading font-black text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-sky-300">
+                ₱760.00
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" form="booking-form" class="w-full py-4 rounded-2xl font-heading font-extrabold text-base text-white bg-gradient-to-r from-saber-electric to-saber-royal hover:from-purple-500 hover:to-blue-500 shadow-xl shadow-purple-700/40 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5">
+              <i class="fa-solid fa-check-circle"></i>
+              Confirm Court Booking
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. ABOUT US ==================== -->
+  <section id="about" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Imagery Collage -->
+        <div class="lg:col-span-6 reveal">
+          <div class="relative">
+            <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-100">
+              <img 
+                src="https://images.unsplash.com/photo-1521537634581-0dced2fee2ef?auto=format&fit=crop&w=1000&q=80" 
+                onerror="this.src='https://placehold.co/900x650/1E1B4B/FFFFFF?text=Saber+Badminton+Community'"
+                alt="Badminton players rallying indoors" 
+                class="w-full h-[380px] sm:h-[440px] object-cover"
+              />
+            </div>
+            <!-- Floating Sporty Badge Card -->
+            <div class="mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:-right-6 rounded-2xl bg-gradient-to-r from-saber-purple to-saber-blue text-white p-6 shadow-xl max-w-xs">
+              <div class="font-heading font-black text-3xl mb-1">100% Passion</div>
+              <p class="text-xs sm:text-sm text-indigo-100 leading-snug">
+                Built by lifelong shuttlecock players dedicated to elevating local badminton standards.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Story & Core Values -->
+        <div class="lg:col-span-6 space-y-6 reveal">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-purple-100 text-saber-purple font-bold text-xs uppercase tracking-widest">
+            Our Story &amp; Mission
+          </span>
+          <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-saber-dark leading-tight">
+            Forged for Precision, Built for the <span class="text-transparent bg-clip-text bg-gradient-to-r from-saber-purple to-saber-blue">Badminton Community</span>
+          </h2>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Saber Badminton Center was founded by passionate badminton enthusiasts who wanted a dedicated home where casual players, weekend warriors, and competitive tournament athletes can experience true BWF-grade playing conditions without compromise.
+          </p>
+          <p class="text-slate-600 leading-relaxed">
+            From our shock-absorbing synthetic courts and glare-free side illumination to our vibrant open-queuing nights, every rally at Saber is designed to sharpen your game and connect fellow shuttle lovers.
+          </p>
+
+          <!-- 3 Core Values Pills -->
+          <div class="grid sm:grid-cols-3 gap-4 pt-4">
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+              <div class="w-10 h-10 rounded-xl bg-purple-100 text-saber-purple flex items-center justify-center mb-3">
+                <i class="fa-solid fa-crosshairs"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-saber-dark mb-1">Precision</h4>
+              <p class="text-xs text-slate-500">Pro court dimensions, exact net tension, and tournament lighting.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+              <div class="w-10 h-10 rounded-xl bg-blue-100 text-saber-blue flex items-center justify-center mb-3">
+                <i class="fa-solid fa-people-group"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-saber-dark mb-1">Community</h4>
+              <p class="text-xs text-slate-500">Inclusive open queuing, corporate leagues, and youth clinics.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+              <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-3">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <h4 class="font-heading font-bold text-base text-saber-dark mb-1">Performance</h4>
+              <p class="text-xs text-slate-500">Joint-friendly flooring and pro gear support for every match.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. CONTACT & LOCATION ==================== -->
+  <section id="contact" class="py-20 lg:py-28 bg-slate-50 border-t border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-saber-blue font-bold text-xs uppercase tracking-widest mb-3">
+          Visit Or Message Us
+        </span>
+        <h2 class="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-saber-dark mb-4">
+          Get in Touch with <span class="text-transparent bg-clip-text bg-gradient-to-r from-saber-purple to-saber-blue">Saber Arena</span>
+        </h2>
+        <p class="text-slate-600 text-base sm:text-lg">
+          Have questions about corporate tournaments, coaching schedules, or private court buyouts? Drop us a message or visit our arena.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left: Location Info & Stylized Interactive Arena Map Card (6 Cols) -->
+        <div class="lg:col-span-6 flex flex-col justify-between space-y-6 reveal">
+          <div class="rounded-3xl bg-white border border-slate-200 p-7 shadow-lg space-y-5">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-purple-100 text-saber-purple flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-location-dot text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-bold text-lg text-saber-dark">Arena Address</h4>
+                <p class="text-sm text-slate-600">88 Saber Sports Complex, Gov. M. Cuenco Ave., Cebu City, Philippines</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 rounded-xl bg-blue-100 text-saber-blue flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-clock text-lg"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-bold text-lg text-saber-dark">Operating Hours</h4>
+                <p class="text-sm text-slate-600">Monday – Sunday: 6:00 AM – 11:00 PM (Including Public Holidays)</p>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+              <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <i class="fa-solid fa-phone text-saber-purple"></i>
+                <span class="text-sm font-bold text-saber-dark">+63 (32) 412-8890</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <i class="fa-solid fa-envelope text-saber-blue"></i>
+                <span class="text-sm font-bold text-saber-dark">play@saberbadminton.ph</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stylized Arena Map Card -->
+          <div class="rounded-3xl bg-gradient-to-br from-saber-dark to-saber-navy text-white p-7 shadow-xl border border-white/10 relative overflow-hidden flex-1 flex flex-col justify-between min-h-[220px]">
+            <div class="absolute inset-0 bg-court-grid opacity-40"></div>
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-car mr-1.5"></i> Free 60-Slot Parking
+              </span>
+              <span class="text-xs text-slate-400">10.3382° N, 123.9114° E</span>
+            </div>
+
+            <div class="relative z-10 my-6 flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-r from-saber-electric to-saber-royal flex items-center justify-center shadow-lg shadow-purple-600/40 shrink-0">
+                <i class="fa-solid fa-map-location-dot text-2xl text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-heading font-extrabold text-xl text-white">Saber Badminton Center</h4>
+                <p class="text-xs sm:text-sm text-slate-300">5 mins from IT Park • Accessible via main avenue &amp; ride-hailing drop-off bay.</p>
+              </div>
+            </div>
+
+            <div class="relative z-10 flex items-center justify-between pt-3 border-t border-white/10">
+              <div class="flex items-center gap-3">
+                <a href="#contact" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-saber-royal flex items-center justify-center transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#contact" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-saber-electric flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#contact" aria-label="TikTok" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-sky-500 flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+              </div>
+              <a href="#booking" class="text-xs font-bold text-sky-300 hover:text-white flex items-center gap-1.5">
+                Reserve Your Slot <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Quick Inquiry Form (6 Cols) -->
+        <div class="lg:col-span-6 reveal">
+          <form id="contact-form" class="bg-white rounded-3xl border border-slate-200 p-7 sm:p-9 shadow-xl space-y-5 h-full flex flex-col justify-between">
+            <div class="space-y-5">
+              <h3 class="font-heading font-extrabold text-2xl text-saber-dark">Send a Quick Inquiry</h3>
+              
+              <!-- Instant Feedback Alert -->
+              <div id="contact-feedback" class="hidden rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-emerald-800 text-sm flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-600 mt-0.5"></i>
+                <div>
+                  <div class="font-bold">Message Sent to Saber Desk!</div>
+                  <p class="text-xs mt-0.5">Our front desk team will reply to your inquiry within 30 minutes.</p>
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="inquiry-name" class="block text-sm font-bold text-slate-700 mb-1.5">Your Name *</label>
+                  <input type="text" id="inquiry-name" required placeholder="Alex Santos" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-saber-blue focus:ring-2 focus:ring-blue-500/20 outline-none text-sm" />
+                </div>
+                <div>
+                  <label for="inquiry-email" class="block text-sm font-bold text-slate-700 mb-1.5">Email Address *</label>
+                  <input type="email" id="inquiry-email" required placeholder="alex@example.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-saber-blue focus:ring-2 focus:ring-blue-500/20 outline-none text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label for="inquiry-topic" class="block text-sm font-bold text-slate-700 mb-1.5">Topic</label>
+                <select id="inquiry-topic" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white focus:border-saber-blue focus:ring-2 focus:ring-blue-500/20 outline-none text-sm font-medium">
+                  <option value="Coaching & Clinics">Coaching &amp; Training Clinics</option>
+                  <option value="Tournament / Corporate Event">Tournament / Corporate Court Buyout</option>
+                  <option value="Monthly Saber Membership">Monthly Saber Club Membership</option>
+                  <option value="Pro Shop & Stringing">Pro Shop &amp; Racket Stringing</option>
+                  <option value="General Question">General Question</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="inquiry-message" class="block text-sm font-bold text-slate-700 mb-1.5">Message *</label>
+                <textarea id="inquiry-message" rows="4" required placeholder="Tell us how we can help you..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-saber-blue focus:ring-2 focus:ring-blue-500/20 outline-none text-sm resize-none"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-2xl font-heading font-extrabold text-sm sm:text-base text-white bg-saber-dark hover:bg-saber-purple transition-colors shadow-lg flex items-center justify-center gap-2">
+              <i class="fa-solid fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-saber-dark text-slate-300 border-t border-white/10 pt-14 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+        
+        <div class="space-y-4">
+          <a href="#home" class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-saber-electric to-saber-royal flex items-center justify-center text-white font-heading font-black">
+              S
+            </div>
+            <span class="font-heading font-extrabold text-xl text-white">SABER BADMINTON</span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Premier indoor badminton arena featuring 8 BWF-approved synthetic courts, pro tournament lighting, and community clinics.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Quick Links</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#home" class="hover:text-sky-400 transition-colors">Home</a></li>
+            <li><a href="#courts" class="hover:text-sky-400 transition-colors">Courts &amp; Facilities</a></li>
+            <li><a href="#rates" class="hover:text-sky-400 transition-colors">Rates &amp; Promos</a></li>
+            <li><a href="#booking" class="hover:text-sky-400 transition-colors">Court Booking</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Programs</h4>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#booking" class="hover:text-violet-400 transition-colors">Hourly Court Rentals</a></li>
+            <li><a href="#courts" class="hover:text-violet-400 transition-colors">Junior &amp; Adult Clinics</a></li>
+            <li><a href="#rates" class="hover:text-violet-400 transition-colors">Monthly VIP Membership</a></li>
+            <li><a href="#contact" class="hover:text-violet-400 transition-colors">Corporate Tournaments</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-4">Arena Hours</h4>
+          <p class="text-sm text-slate-400 mb-2">Open Daily: <span class="text-white font-semibold">6:00 AM – 11:00 PM</span></p>
+          <p class="text-sm text-slate-400">88 Saber Sports Complex, Cebu City</p>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 Saber Badminton Center. All rights reserved.</p>
+        <p>Engineered for Smashers • BWF-Standard Indoor Courts</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== BOOKING CONFIRMATION RECEIPT MODAL ==================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-saber-dark/80 backdrop-blur-md">
+    <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200 transform transition-all">
+      <!-- Top Gradient Header -->
+      <div class="bg-gradient-to-r from-saber-purple to-saber-blue p-6 text-white text-center relative">
+        <button type="button" id="close-modal-x" aria-label="Close Receipt" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="w-14 h-14 rounded-2xl bg-white/20 mx-auto flex items-center justify-center text-2xl mb-3 shadow-inner">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 class="font-heading font-black text-2xl">Court Reserved!</h3>
+        <p class="text-xs text-indigo-100 mt-1">Present this receipt at the Saber Front Desk</p>
+      </div>
+
+      <!-- Receipt Body -->
+      <div class="p-6 space-y-4">
+        <div class="flex items-center justify-between bg-slate-100 px-4 py-3 rounded-xl">
+          <span class="text-xs font-bold uppercase text-slate-500">Booking Ref ID</span>
+          <div class="flex items-center gap-2">
+            <span id="receipt-ref" class="font-heading font-black text-base text-saber-purple">SBR-84920</span>
+            <button type="button" onclick="copyBookingRef()" title="Copy Reference ID" class="text-slate-500 hover:text-saber-blue text-xs px-2 py-1 rounded bg-white border border-slate-200">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-2.5 text-sm border-b border-slate-100 pb-4">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Player Name:</span>
+            <span id="receipt-name" class="font-bold text-saber-dark">—</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Contact:</span>
+            <span id="receipt-contact" class="font-semibold text-slate-700">—</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Assigned Court:</span>
+            <span id="receipt-court" class="font-bold text-saber-blue">—</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Date &amp; Duration:</span>
+            <span id="receipt-schedule" class="font-semibold text-slate-700">—</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Gear Add-Ons:</span>
+            <span id="receipt-addons" class="font-semibold text-slate-700">None</span>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-1">
+          <span class="font-heading font-bold text-base text-slate-700">Total Amount Due</span>
+          <span id="receipt-total" class="font-heading font-black text-2xl text-saber-purple">₱0.00</span>
+        </div>
+
+        <p id="copy-toast" class="hidden text-center text-xs font-bold text-emerald-600">
+          Reference ID copied to clipboard!
+        </p>
+
+        <button type="button" id="close-modal-btn" class="w-full py-3.5 rounded-xl font-heading font-extrabold text-sm text-white bg-saber-dark hover:bg-saber-purple transition-colors">
+          Done &amp; Back to Arena
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ---------------- 1. MOBILE NAVIGATION DRAWER ---------------- */
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.className = isHidden
+          ? 'fa-solid fa-xmark text-xl w-6 h-6 flex items-center justify-center'
+          : 'fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center';
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.className = 'fa-solid fa-bars text-xl w-6 h-6 flex items-center justify-center';
+        });
+      });
+
+      /* ---------------- 2. SCROLL REVEAL ANIMATIONS ---------------- */
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      /* ---------------- 3. LIVE PRICE CALCULATOR & BOOKING ---------------- */
+      const bookingDateInput = document.getElementById('booking-date');
+      const courtSelect = document.getElementById('court-select');
+      const rateTierSelect = document.getElementById('rate-tier');
+      const durationInput = document.getElementById('duration-hours');
+      const racketInput = document.getElementById('racket-qty');
+      const shuttleInput = document.getElementById('shuttle-qty');
+      const promoInput = document.getElementById('promo-code');
+      const applyPromoBtn = document.getElementById('apply-promo-btn');
+      const promoFeedback = document.getElementById('promo-feedback');
+
+      // Set default date to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const yyyy = tomorrow.getFullYear();
+      const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+      const dd = String(tomorrow.getDate()).padStart(2, '0');
+      const defaultDateStr = `${yyyy}-${mm}-${dd}`;
+      bookingDateInput.value = defaultDateStr;
+      bookingDateInput.min = new Date().toISOString().split('T')[0];
+
+      // Valid promo codes dictionary
+      const PROMO_CODES = {
+        'SABER10': { discount: 0.10, label: 'SABER10 (10% Off)' },
+        'STUDENT15': { discount: 0.15, label: 'STUDENT15 (15% Off)' }
+      };
+      let activePromo = null;
+
+      // Format PHP currency
+      function formatPHP(amount) {
+        return '₱' + amount.toLocaleString('en-PH', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      }
+
+      // Main Live Calculation Engine
+      window.updatePriceCalculator = function() {
+        const selectedOption = rateTierSelect.options[rateTierSelect.selectedIndex];
+        const hourlyRate = parseFloat(selectedOption.getAttribute('data-rate')) || 380;
+        const duration = parseInt(durationInput.value, 10) || 1;
+        const rackets = parseInt(racketInput.value, 10) || 0;
+        const shuttles = parseInt(shuttleInput.value, 10) || 0;
+
+        const courtCost = hourlyRate * duration;
+        const racketCost = rackets * 80;
+        const shuttleCost = shuttles * 850;
+        const subtotal = courtCost + racketCost + shuttleCost;
+
+        let discountAmount = 0;
+        if (activePromo) {
+          discountAmount = subtotal * activePromo.discount;
+        }
+        const finalTotal = Math.max(0, subtotal - discountAmount);
+
+        // Update Summary Metadata
+        document.getElementById('summary-court').textContent = courtSelect.value;
+        document.getElementById('summary-date').textContent = bookingDateInput.value || 'Select a date';
+        document.getElementById('summary-tier').textContent = selectedOption.text.split('—')[0].trim();
+
+        // Update Itemized Rows
+        document.getElementById('calc-court-label').textContent = `Court Rental (${duration} hr${duration > 1 ? 's' : ''} × ₱${hourlyRate})`;
+        document.getElementById('calc-court-cost').textContent = formatPHP(courtCost);
+
+        const racketRow = document.getElementById('calc-racket-row');
+        if (rackets > 0) {
+          racketRow.classList.remove('hidden');
+          document.getElementById('calc-racket-label').textContent = `Racket Rentals (${rackets} × ₱80)`;
+          document.getElementById('calc-racket-cost').textContent = formatPHP(racketCost);
+        } else {
+          racketRow.classList.add('hidden');
+        }
+
+        const shuttleRow = document.getElementById('calc-shuttle-row');
+        if (shuttles > 0) {
+          shuttleRow.classList.remove('hidden');
+          document.getElementById('calc-shuttle-label').textContent = `Feather Shuttle Tubes (${shuttles} × ₱850)`;
+          document.getElementById('calc-shuttle-cost').textContent = formatPHP(shuttleCost);
+        } else {
+          shuttleRow.classList.add('hidden');
+        }
+
+        document.getElementById('calc-subtotal').textContent = formatPHP(subtotal);
+
+        const discountRow = document.getElementById('calc-discount-row');
+        if (activePromo && discountAmount > 0) {
+          discountRow.classList.remove('hidden');
+          document.getElementById('calc-discount-label').textContent = `Promo: ${activePromo.label}`;
+          document.getElementById('calc-discount-amount').textContent = `-${formatPHP(discountAmount)}`;
+        } else {
+          discountRow.classList.add('hidden');
+        }
+
+        document.getElementById('calc-total').textContent = formatPHP(finalTotal);
+
+        return {
+          court: courtSelect.value,
+          date: bookingDateInput.value,
+          tierText: selectedOption.text.split('—')[0].trim(),
+          duration,
+          rackets,
+          shuttles,
+          finalTotal
+        };
+      };
+
+      // Quantity Stepper Helper
+      window.adjustQty = function(inputId, delta, minVal, maxVal) {
+        const input = document.getElementById(inputId);
+        let current = parseInt(input.value, 10) || minVal;
+        current = Math.min(maxVal, Math.max(minVal, current + delta));
+        input.value = current;
+        updatePriceCalculator();
+      };
+
+      // Apply Promo Code Handler
+      function handleApplyPromo() {
+        const code = promoInput.value.trim().toUpperCase();
+        if (!code) {
+          activePromo = null;
+          promoFeedback.innerHTML = 'Valid codes: <span class="text-saber-purple font-bold">SABER10</span> (10% off) • <span class="text-saber-blue font-bold">STUDENT15</span> (15% off)';
+          promoFeedback.className = 'text-xs font-semibold mt-1.5 text-slate-500';
+          updatePriceCalculator();
+          return;
+        }
+
+        if (PROMO_CODES[code]) {
+          activePromo = PROMO_CODES[code];
+          promoFeedback.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Promo <strong>${activePromo.label}</strong> applied!`;
+          promoFeedback.className = 'text-xs font-bold mt-1.5 text-emerald-600';
+        } else {
+          activePromo = null;
+          promoFeedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Invalid promo code. Try <strong>SABER10</strong> or <strong>STUDENT15</strong>.`;
+          promoFeedback.className = 'text-xs font-bold mt-1.5 text-rose-600';
+        }
+        updatePriceCalculator();
+      }
+
+      applyPromoBtn.addEventListener('click', handleApplyPromo);
+      promoInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleApplyPromo();
+        }
+      });
+
+      // Helper functions from Rates & Promos cards
+      window.selectRateAndScroll = function(tierValue) {
+        rateTierSelect.value = tierValue;
+        updatePriceCalculator();
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      window.applyPromoAndScroll = function(code) {
+        promoInput.value = code;
+        handleApplyPromo();
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      };
+
+      // Listen to live form input changes
+      [courtSelect, bookingDateInput, rateTierSelect].forEach(el => {
+        el.addEventListener('change', updatePriceCalculator);
+      });
+
+      // Initialize calculator display
+      updatePriceCalculator();
+
+      /* ---------------- 4. BOOKING SUBMISSION & RECEIPT MODAL ---------------- */
+      const bookingForm = document.getElementById('booking-form');
+      const errorBanner = document.getElementById('form-error-banner');
+      const errorText = document.getElementById('form-error-text');
+      const bookingModal = document.getElementById('booking-modal');
+
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const playerName = document.getElementById('player-name').value.trim();
+        const playerContact = document.getElementById('player-contact').value.trim();
+        const bookingDate = bookingDateInput.value;
+
+        if (!playerName || !playerContact || !bookingDate) {
+          errorText.textContent = 'Please enter your full name, email/mobile number, and play date to confirm your court.';
+          errorBanner.classList.remove('hidden');
+          errorBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        errorBanner.classList.add('hidden');
+        const summary = updatePriceCalculator();
+
+        // Generate Booking Reference ID
+        const randomNum = Math.floor(10000 + Math.random() * 90000);
+        const refId = `SBR-${randomNum}`;
+
+        document.getElementById('receipt-ref').textContent = refId;
+        document.getElementById('receipt-name').textContent = playerName;
+        document.getElementById('receipt-contact').textContent = playerContact;
+        document.getElementById('receipt-court').textContent = summary.court;
+        document.getElementById('receipt-schedule').textContent = `${summary.date} (${summary.duration} hr${summary.duration > 1 ? 's' : ''})`;
+
+        const addOnsList = [];
+        if (summary.rackets > 0) addOnsList.push(`${summary.rackets} Racket${summary.rackets > 1 ? 's' : ''}`);
+        if (summary.shuttles > 0) addOnsList.push(`${summary.shuttles} Shuttle Tube${summary.shuttles > 1 ? 's' : ''}`);
+        document.getElementById('receipt-addons').textContent = addOnsList.length ? addOnsList.join(', ') : 'None';
+
+        document.getElementById('receipt-total').textContent = formatPHP(summary.finalTotal);
+
+        // Show Modal
+        bookingModal.classList.remove('hidden');
+        bookingModal.classList.add('flex');
+      });
+
+      function closeModal() {
+        bookingModal.classList.add('hidden');
+        bookingModal.classList.remove('flex');
+        document.getElementById('copy-toast').classList.add('hidden');
+      }
+
+      document.getElementById('close-modal-x').addEventListener('click', closeModal);
+      document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+      bookingModal.addEventListener('click', (e) => {
+        if (e.target === bookingModal) closeModal();
+      });
+
+      // Clipboard Copy via document.execCommand for iframe compatibility
+      window.copyBookingRef = function() {
+        const refText = document.getElementById('receipt-ref').textContent;
+        const tempInput = document.createElement('input');
+        tempInput.value = refText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        const toast = document.getElementById('copy-toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2500);
+      };
+
+      /* ---------------- 5. CONTACT FORM SUBMISSION ---------------- */
+      const contactForm = document.getElementById('contact-form');
+      const contactFeedback = document.getElementById('contact-feedback');
+
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        contactFeedback.classList.remove('hidden');
+        contactForm.reset();
+        setTimeout(() => {
+          contactFeedback.classList.add('hidden');
+        }, 5000);
+      });
+    });
+  </script>
+</body>
+</html>	
